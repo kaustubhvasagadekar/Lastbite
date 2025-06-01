@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "684360527269",
+    "project_id": "last-bite-52e1a",
+    "storage_bucket": "last-bite-52e1a.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:684360527269:android:7467f38fe50d1c5cbf0c4c",
+        "android_client_info": {
+          "package_name": "com.example.last_bite"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDxZdtJckhXQzTNIVdrYL3Scr4q-wXhFuw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
