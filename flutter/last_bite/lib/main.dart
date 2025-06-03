@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:provider/provider.dart';
 import 'package:last_bite/screens/create_order_screen.dart';
+import 'package:last_bite/providers/order_provider.dart';
 import 'screens/home_screen.dart';
 import 'screens/order_list_screen.dart';
 import 'screens/income_report_screen.dart';
@@ -17,8 +19,12 @@ class LastBiteApp extends StatelessWidget {
 
 @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Last Bite',
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (ctx) => OrderProvider()),
+      ],
+      child: MaterialApp(
+        title: 'Last Bite',
       theme: ThemeData(
         // Primary color: soft sage green
         primaryColor: const Color(0xFFA8B5A2),
@@ -55,6 +61,7 @@ class LastBiteApp extends StatelessWidget {
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
       home: const MainScreen(),
+      ),
     );
   }
 }

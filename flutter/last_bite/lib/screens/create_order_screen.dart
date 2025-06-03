@@ -360,21 +360,22 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
                   ElevatedButton.icon(
                     onPressed: () async {
                       if (_formKey.currentState!.validate()) {
-                        await Provider.of<OrderProvider>(context, listen: false)
-                            .addOrder(
-                          _itemNameController.text,
-                          _orderNameController.text,
-                          double.parse(_priceController.text),
-                          int.parse(_quantityController.text),
-                          _selectedCategory,
-                          _addressController.text,
-                          _flatNoController.text,
-                          _mobileNumberController.text,
-                          _selectedDeliveryTime,
-                          _noteController.text,
-                          _isPaid,
-                          _isDelivered,
-                        );
+                        try {
+                          await Provider.of<OrderProvider>(context, listen: false)
+                              .addOrder(
+                            _itemNameController.text,
+                            _orderNameController.text,
+                            double.parse(_priceController.text),
+                            int.parse(_quantityController.text),
+                            _selectedCategory,
+                            _addressController.text,
+                            _flatNoController.text,
+                            _mobileNumberController.text,
+                            _selectedDeliveryTime,
+                            _noteController.text,
+                            _isPaid,
+                            _isDelivered,
+                          );
                         _itemNameController.clear();
                         _orderNameController.clear();
                         _priceController.clear();
@@ -398,15 +399,32 @@ class _CreateOrderScreenState extends State<CreateOrderScreen> {
                             ),
                           ),
                         );
-                        // Navigator to OrderListScreen()
+                        // Navigate to OrderListScreen()
                         Navigator.push(
                             context,
                             MaterialPageRoute(
                                 builder: (context) => const OrderListScreen()));
+                        } catch (e) {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            SnackBar(
+                              content: Text('Error: ${e.toString()}'),
+                              backgroundColor: Colors.red,
+                              behavior: SnackBarBehavior.floating,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                            ),
+                          );
+                        }
                       }
                     },
                     icon: const Icon(Icons.add_shopping_cart),
                     label: const Text('Add to Order'),
+                   // set button color to orange
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Colors.orange,
+                      foregroundColor: Colors.white,
+                    ),
                   ),
                 ],
               ),

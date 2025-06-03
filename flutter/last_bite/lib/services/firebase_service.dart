@@ -114,9 +114,9 @@ class FirebaseService {
   }
 
   // Update an existing order
-  Future<void> updateOrder(Order order, String itemName) async {
+  Future<void> updateOrder(Order order, String orderId) async {
     try {
-      await _ordersCollection.doc(order.id).update({
+      await _ordersCollection.doc(orderId).update({
         'itemName': order.itemName,
         'orderName': order.orderName,
         'price': order.price,

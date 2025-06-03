@@ -5,13 +5,13 @@ class AppLogo extends StatelessWidget {
   
   const AppLogo({
     super.key,
-    this.size = 30,
+    this.size = 40,
   });
 
   @override
   Widget build(BuildContext context) {
     return Image.asset(
-      'assets/icon/logo.png',
+      'assets/icon/splash_icon.png',
       width: size,
       height: size,
     );
