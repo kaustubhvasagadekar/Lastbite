@@ -51,6 +51,8 @@ class FirebaseService {
           'id': doc.id,
           'date': date.toIso8601String(),
           'deliveryTime': deliveryTime.toIso8601String(),
+          'price': (data['price'] as num).toDouble(),
+          'quantity': (data['quantity'] as num).toInt(),
         });
       }).toList();
     });
@@ -143,6 +145,16 @@ class FirebaseService {
       await _ordersCollection.doc(orderId).delete();
     } catch (e) {
       print('Error deleting order: $e');
+      throw e;
+    }
+  }
+
+  // Update payment status
+  Future<void> updatePaymentStatus(String orderId, bool isPaid) async {
+    try {
+      await _ordersCollection.doc(orderId).update({'isPaid': isPaid});
+    } catch (e) {
+      print('Error updating payment status: $e');
       throw e;
     }
   }
